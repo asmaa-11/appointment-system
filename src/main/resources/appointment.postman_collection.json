@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "7c37b5c8-d60b-4f00-bc1c-507e573a3b07",
+		"name": "appointment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2165264"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/getPatintAppointmentHistory?patientName=asmaa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPatintAppointmentHistory?patientName=asmaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPatintAppointmentHistory"
+					],
+					"query": [
+						{
+							"key": "patientName",
+							"value": "asmaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/getAppointmentByPatientName?patientName=asmaa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getAppointmentByPatientName?patientName=asmaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getAppointmentByPatientName"
+					],
+					"query": [
+						{
+							"key": "patientName",
+							"value": "asmaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/getAppointmentByDate?appointmentDate=2023-05-13",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getAppointmentByDate?appointmentDate=2023-05-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getAppointmentByDate"
+					],
+					"query": [
+						{
+							"key": "appointmentDate",
+							"value": "2023-05-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/listTodayAppointment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/listTodayAppointment"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/cancelAppointment?appointmentId=13&cancelReasonId=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cancelAppointment?appointmentId=13&cancelReasonId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cancelAppointment"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "13"
+						},
+						{
+							"key": "cancelReasonId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/addAppointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "useremail",
+						"value": "user3@gmail.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientName\":\"asmaa\",\r\n    \"appointmentDate\":\"2023-05-13\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/addAppointment"
+			},
+			"response": []
+		}
+	]
+}
