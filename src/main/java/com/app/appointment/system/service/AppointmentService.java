@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.app.appointment.system.dto.request.AppointmentRequestDto;
 import com.app.appointment.system.dto.response.AppointmentResponseDTO;
+import com.app.appointment.system.exception.BussinessException;
 
 public interface AppointmentService {
 
@@ -13,7 +14,7 @@ public interface AppointmentService {
 
 	AppointmentResponseDTO addAppointment(AppointmentRequestDto dto);
 
-	void cancelAppointment(Integer appointmentId, Integer cancelReasonId);
+	void cancelAppointment(Integer appointmentId, Integer cancelReasonId) throws BussinessException;
 
 	List<AppointmentResponseDTO> getAppointmentByDate(String appointmentDate) throws ParseException;
 

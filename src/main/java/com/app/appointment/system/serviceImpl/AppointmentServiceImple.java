@@ -15,6 +15,7 @@ import com.app.appointment.system.dto.request.AppointmentRequestDto;
 import com.app.appointment.system.dto.response.AppointmentResponseDTO;
 import com.app.appointment.system.entity.Appointment;
 import com.app.appointment.system.entity.CancelReasone;
+import com.app.appointment.system.exception.BussinessException;
 import com.app.appointment.system.repository.AppointmentRepository;
 import com.app.appointment.system.repository.CancelReasoneRepository;
 import com.app.appointment.system.service.AppointmentService;
@@ -35,7 +36,10 @@ public class AppointmentServiceImple implements AppointmentService {
 			list.add(AppointemntAdapter.convertFromEntityToDto(appointemnt));
 
 		});
-		return list;
+		if (list.size() > 0)
+			return list;
+		else
+			return null;
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class AppointmentServiceImple implements AppointmentService {
 	}
 
 	@Override
-	public void cancelAppointment(Integer appointmentId, Integer cancelReasonId) {
+	public void cancelAppointment(Integer appointmentId, Integer cancelReasonId) throws BussinessException {
 		Optional<Appointment> entity = appointmentRepository.findById(appointmentId);
 		if (entity.isPresent()) {
 			/* get reasone by id */
@@ -57,8 +61,11 @@ public class AppointmentServiceImple implements AppointmentService {
 				entity.get().setCancelReasone(reasone.get());
 				appointmentRepository.save(entity.get());
 			} else {
+				throw new BussinessException("resonse not found ");
+
 			}
 		} else {
+			throw new BussinessException("AppointMnet not found ");
 
 		}
 	}
@@ -66,8 +73,7 @@ public class AppointmentServiceImple implements AppointmentService {
 	@Override
 	public List<AppointmentResponseDTO> getAppointmentByDate(String appointmentDate) throws ParseException {
 		List<AppointmentResponseDTO> list = new ArrayList<>();
-		appointmentRepository
-				.findAllWithAppintmentDate(new SimpleDateFormat("yyyy-MM-dd").parse(appointmentDate))
+		appointmentRepository.findAllWithAppintmentDate(new SimpleDateFormat("yyyy-MM-dd").parse(appointmentDate))
 				.forEach(appointemnt -> {
 					list.add(AppointemntAdapter.convertFromEntityToDto(appointemnt));
 

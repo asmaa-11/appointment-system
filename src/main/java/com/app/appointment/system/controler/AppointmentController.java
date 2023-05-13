@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.appointment.system.dto.request.AppointmentRequestDto;
 import com.app.appointment.system.dto.response.AppointmentResponseDTO;
+import com.app.appointment.system.exception.BussinessException;
 import com.app.appointment.system.service.AppointmentService;
 
 @RestController
@@ -34,7 +35,8 @@ public class AppointmentController {
 	}
 
 	@GetMapping("/cancelAppointment")
-	public ResponseEntity<?> cancelAppointment(@RequestParam("appointmentId") int appointmentId,@RequestParam("cancelReasonId") int cancelReasonId) {
+	public ResponseEntity<?> cancelAppointment(@RequestParam("appointmentId") int appointmentId,
+			@RequestParam("cancelReasonId") int cancelReasonId) throws BussinessException {
 		String message = "";
 		/* for creating file */
 		appointmentService.cancelAppointment(appointmentId,cancelReasonId);
